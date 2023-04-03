@@ -6,8 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 
 public class MoviesManagerTest {
 
-    private int movie;
-    MoviesManager manager = new MoviesManager(movie);
+    MoviesManager manager = new MoviesManager();
+    MoviesManager manager2 = new MoviesManager(3);
 
 
     String movie1 = "Bladshot";
@@ -89,20 +89,51 @@ public class MoviesManagerTest {
 
     @Test
     public void getTest5() {
-        MoviesManager manager = new MoviesManager();
+        MoviesManager manager2 = new MoviesManager(3);
 
-        manager.add("movie1");
-        manager.add("movie2");
-        manager.add("movie3");
+        manager2.add("movie1");
+        manager2.add("movie2");
 
 
-        String[] expected = {"movie3", "movie2", "movie1"};
-        String[] actual = manager.findLast();
+
+        String[] expected = {"movie2", "movie1"};
+        String[] actual = manager2.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void getTest6() {
+        MoviesManager manager2 = new MoviesManager(3);
 
+        manager2.add("movie1");
+        manager2.add("movie2");
+        manager2.add("movie3");
+        manager2.add("movie4");
+        manager2.add("movie5");
+        manager2.add("movie6");
+        manager2.add("movie7");
+
+
+        String[] expected = {"movie7", "movie6", "movie5"};
+        String[] actual = manager2.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void getTest7() {
+        MoviesManager manager2 = new MoviesManager(3);
+
+        manager2.add("movie1");
+        manager2.add("movie2");
+        manager2.add("movie3");
+
+
+        String[] expected = {"movie3", "movie2","movie1"};
+        String[] actual = manager2.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
 
 
